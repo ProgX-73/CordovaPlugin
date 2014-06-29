@@ -28,6 +28,22 @@ public class Calendar extends CordovaPlugin {
                     .putExtra("eventLocation", arg_object.getString("eventLocation"));
 
                 this.cordova.getActivity().startActivity(calIntent);
+                
+                //Sur le UI Thread
+                /*cordova.getActivity().runOnUiThread(new Runnable() {
+                     public void run() {
+                         // Main Code goes here
+                         callbackContext.success(); 
+                     }
+                 }*/
+                //Threzad separé
+                /*cordova.getThreadPool().execute(new Runnable() {
+                public void run() {
+                        // Main Code goes here
+                        callbackContext.success(); 
+                    }
+                });*/
+                
                 callbackContext.success();
                 return true;
             }
