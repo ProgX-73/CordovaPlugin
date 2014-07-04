@@ -16,24 +16,7 @@ public class Calendar extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
-    cordova.getThreadPool().execute(new Runnable() {
-			@Override
-			public void run() {
-				
-					try {
-						final String message = "HELLO FROM PLUG CORDOVA !!!";
-					
-						//	showToast(message, Toast.LENGTH_LONG);
-						
-					} catch (JSONException e) {
-						
-						e.printStackTrace();
-						callbackContext.error(e.getMessage());
-					}
-				
-				callbackContext.success();
-			}
-		});
+    callbackContext.success();
         return true;
     }
   
