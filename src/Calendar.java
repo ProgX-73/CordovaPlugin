@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.Toast;
 
 
 public class Calendar extends CordovaPlugin {
@@ -17,7 +18,7 @@ public class Calendar extends CordovaPlugin {
 
         cordova.getActivity().runOnUiThread(new Runnable() {
                      public void run() {
-                        Toast.makeText(getApplicationContext(), "Hello from Plugin !!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Hello from Plugin !!!", Toast.LENGTH_LONG).show();
                          callbackContext.success(); 
                      }
         }
@@ -52,13 +53,13 @@ public class Calendar extends CordovaPlugin {
                // callbackContext.success();
                 return true;
             }
-            callbackContext.error("Invalid action");
-            return false;
-        } catch (Exception e) {
+            //callbackContext.error("Invalid action");
+            //return false;
+        /*} catch (Exception e) {
             System.err.println("Exception: " + e.getMessage());
             callbackContext.error(e.getMessage());
             return false;
-        }
+        }*/
 
-    }
+    //}
 }
