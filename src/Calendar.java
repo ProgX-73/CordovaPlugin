@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class Calendar extends CordovaPlugin {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
 
+    private String result ="";
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -21,9 +22,10 @@ public class Calendar extends CordovaPlugin {
 			public void run() {
 				Toast toast = Toast.makeText(cordova.getActivity(), "HELLO FROM PLUG", 1);
 				toast.show();
+				result="myResultFromPLuG";
 			}
 		});
-        callbackContext.success();
+         callbackContext.success(result); 
         return true;
     }
   
