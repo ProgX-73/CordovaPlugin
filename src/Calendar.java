@@ -15,8 +15,13 @@ public class Calendar extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
-
-        try {
+        cordova.getActivity().runOnUiThread(new Runnable() {
+                     public void run() {
+                        Toast.makeText(getApplicationContext(), "Hello from Plugin !!!", Toast.LENGTH_LONG).show();
+                         callbackContext.success(); 
+                     }
+        }
+        /*try {
             if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {
                 JSONObject arg_object = args.getJSONObject(0);
                 Intent calIntent = new Intent(Intent.ACTION_EDIT)
@@ -44,7 +49,7 @@ public class Calendar extends CordovaPlugin {
                     }
                 });*/
                 
-                callbackContext.success();
+               // callbackContext.success();
                 return true;
             }
             callbackContext.error("Invalid action");
