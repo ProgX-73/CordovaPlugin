@@ -16,39 +16,35 @@ public class Calendar extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
- 
-        try {
-            if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {
-               
-                
-                //Sur le UI Thread
-                /*cordova.getActivity().runOnUiThread(new Runnable() {
-                     public void run() {
-                         // Main Code goes here
-                         callbackContext.success(); 
-                     }
-                 }*/
-                //Threzad separé
-                /*cordova.getThreadPool().execute(new Runnable() {
-                public void run() {
-                        // Main Code goes here
-                        callbackContext.success(); 
-                    }
-                });*/
-                //showToast("Hello from cordova plugin !!!", Toast.LENGTH_LONG);
-               callbackContext.success();
-                return true;
-            }
-            callbackContext.error("Invalid action");
-            return false;
-        } catch (Exception e) {
-            System.err.println("Exception: " + e.getMessage());
-            callbackContext.error(e.getMessage());
-            return false;
-        }
-
+    cordova.getThreadPool().execute(new Runnable() {
+			@Override
+			public void run() {
+				
+					try {
+						final String message = "HELLO FROM PLUG CORDOVA !!!";
+					
+							showToast(message, Toast.LENGTH_LONG);
+						
+					} catch (JSONException e) {
+						Log.e(LOG_PROV, LOG_NAME + ": Error: ");
+						e.printStackTrace();
+						callbackContext.error(e.getMessage());
+					}
+				
+				callbackContext.success();
+			}
+		});
+        return true;
     }
     private void showToast(final String message, final int length) {
+        
+        cordova.getActivity().runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				toast = Toast.makeText(cordova.getActivity(), message, length);
+				toast.show();
+			}
+		});
 		
 	}
 }
