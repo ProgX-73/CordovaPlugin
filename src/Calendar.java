@@ -35,7 +35,7 @@ public class Calendar extends CordovaPlugin {
                         callbackContext.success(); 
                     }
                 });*/
-                showToast("Hello from cordova plugin !!!", Toast.LENGTH_LONG);
+                //showToast("Hello from cordova plugin !!!", Toast.LENGTH_LONG);
                callbackContext.success();
                 return true;
             }
