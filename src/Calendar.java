@@ -16,6 +16,7 @@ public class Calendar extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
+    cordova.getActivity();
     callbackContext.success();
         return true;
     }
