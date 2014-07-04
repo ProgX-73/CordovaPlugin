@@ -19,16 +19,25 @@ public class Calendar extends CordovaPlugin {
  
         try {
             if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {
+               
                 
-                cordova.getActivity().runOnUiThread(new Runnable() {
+                //Sur le UI Thread
+                /*cordova.getActivity().runOnUiThread(new Runnable() {
                      public void run() {
-                         Toast.makeText(this, "msg from Plug yep !!!", Toast.LENGTH_LONG).show();
+                         // Main Code goes here
                          callbackContext.success(); 
                      }
-                    
-                });
+                 }*/
+                //Threzad separé
+                /*cordova.getThreadPool().execute(new Runnable() {
+                public void run() {
+                        // Main Code goes here
+                        callbackContext.success(); 
+                    }
+                });*/
+                showToast("Hello from cordova plugin !!!", Toast.LENGTH_LONG);
+               callbackContext.success();
                 return true;
-          
             }
             callbackContext.error("Invalid action");
             return false;
@@ -39,4 +48,13 @@ public class Calendar extends CordovaPlugin {
         }
 
     }
+    private void showToast(final String message, final int length) {
+		cordova.getActivity().runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				toast = Toast.makeText(cordova.getActivity(), message, length);
+				toast.show();
+			}
+		});
+	}
 }
