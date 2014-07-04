@@ -20,11 +20,13 @@ public class Calendar extends CordovaPlugin {
     cordova.getActivity().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				Toast toast = Toast.makeText(cordova.getActivity(), "HELLO FROM PLUG 2", 1);
+				Toast toast = Toast.makeText(cordova.getActivity(), "HELLO FROM PLUG 1", 1);
 				toast.show();
 				result="1-myResultFromPLuG on UI";
 			}
 		});
+    
+    cordova.getActivity().getThreadPool();
         
     
         
