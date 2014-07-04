@@ -26,7 +26,7 @@ public class Calendar extends CordovaPlugin {
 			}
 		});
     
-    cordova.getActivity().getThreadPool();
+    cordova.getActivity();
         
     
         
