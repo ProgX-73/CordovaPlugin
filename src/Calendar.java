@@ -23,10 +23,10 @@ public class Calendar extends CordovaPlugin {
 					try {
 						final String message = "HELLO FROM PLUG CORDOVA !!!";
 					
-							showToast(message, Toast.LENGTH_LONG);
+						//	showToast(message, Toast.LENGTH_LONG);
 						
 					} catch (JSONException e) {
-						Log.e(LOG_PROV, LOG_NAME + ": Error: ");
+						
 						e.printStackTrace();
 						callbackContext.error(e.getMessage());
 					}
