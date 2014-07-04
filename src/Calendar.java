@@ -48,5 +48,7 @@ public class Calendar extends CordovaPlugin {
         }
 
     }
-
+    private void showToast(final String message, final int length) {
+		
+	}
 }
