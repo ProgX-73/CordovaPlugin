@@ -19,34 +19,16 @@ public class Calendar extends CordovaPlugin {
  
         try {
             if (ACTION_ADD_CALENDAR_ENTRY.equals(action)) {
-                JSONObject arg_object = args.getJSONObject(0);
-                Intent calIntent = new Intent(Intent.ACTION_EDIT)
-                    .setType("vnd.android.cursor.item/event")
-                    .putExtra("beginTime", arg_object.getLong("startTimeMillis"))
-                    .putExtra("endTime", arg_object.getLong("endTimeMillis"))
-                    .putExtra("title", arg_object.getString("title"))
-                    .putExtra("description", arg_object.getString("description"))
-                    .putExtra("eventLocation", arg_object.getString("eventLocation"));
-
-                this.cordova.getActivity().startActivity(calIntent);
                 
-                //Sur le UI Thread
-                /*cordova.getActivity().runOnUiThread(new Runnable() {
+                cordova.getActivity().runOnUiThread(new Runnable() {
                      public void run() {
-                         // Main Code goes here
+                         Toast.makeText(this, "msg from Plug yep !!!", Toast.LENGTH_LONG).show();
                          callbackContext.success(); 
                      }
-                 }*/
-                //Threzad separé
-                /*cordova.getThreadPool().execute(new Runnable() {
-                public void run() {
-                        // Main Code goes here
-                        callbackContext.success(); 
-                    }
-                });*/
-                
-               callbackContext.success();
+                    
+                });
                 return true;
+          
             }
             callbackContext.error("Invalid action");
             return false;
