@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.progx73.calendar" version="0.1.0">
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.progx73.calendar" version="0.1.1">
     <name>Calendar</name>
     <description>Sample PhoneGap Calendar Plugin</description>
     <license>MIT</license>
