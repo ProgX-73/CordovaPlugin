@@ -8,12 +8,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;
 import android.util.Log;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Calendar extends CordovaPlugin {
     public static final String ACTION_ADD_CALENDAR_ENTRY = "addCalendarEntry";
 
     private String result ="";
+    private String buff="";
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -25,6 +28,15 @@ public class Calendar extends CordovaPlugin {
 				Toast toast = Toast.makeText(cordova.getActivity(), "HELLO FROM PLUG 1", 1);
 				toast.show();
 				result="1-myResultFromPLuG on UI";
+                
+                Timer tui = new Timer();
+        
+                tui.schedule(new TimerTask(){
+                    public void run(){
+                        
+                        Log.d("pool","task read buffer..."+buff);
+                    }
+                },500,1000);
 			}
 		});
     
@@ -32,6 +44,14 @@ public class Calendar extends CordovaPlugin {
     @Override
     public void run() {
     	Log.d("Pool thread","Hello world 2 ;) ****************************************");
+        Timer t = new Timer();
+        
+        t.schedule(new TimerTask(){
+            public void run(){
+                buff +="*";
+                Log.d("pool","task fill buffer...");
+            }
+        },3000,1000);
     }
     });
         
