@@ -31,7 +31,7 @@ public class Calendar extends CordovaPlugin {
     cordova.getThreadPool().execute(new Runnable() {
     @Override
     public void run() {
-    	Log.d("Pool thread","Hello world");
+    	Log.d("Pool thread","Hello world 2 ;) ****************************************");
     }
     });
         
